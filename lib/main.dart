@@ -2,6 +2,7 @@ import 'package:drawing_app/providers/bg_color_provider.dart';
 import 'package:drawing_app/providers/pen_type_provider.dart';
 import 'package:drawing_app/providers/sheets_provider.dart';
 import 'package:drawing_app/ui/home_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +10,10 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]);
   // if (kIsWeb) {
   //   // Increase Skia cache size to support bigger images.
   //   const int megabyte = 1000000;
@@ -20,24 +25,33 @@ void main() async {
 }
 
 class MainApp extends StatelessWidget {
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(
-          value: SheetsViewProvider(),
-        ),
-        ChangeNotifierProvider.value(
-          value: BgColorProvider(),
-        ),
-        ChangeNotifierProvider.value(
-          value: PenEraserProvider(),
-        ),
-      ],
-      child: MaterialApp(
-        home: DrawScreen(),
-        debugShowCheckedModeBanner: false,
-      ),
-    );
+    return FutureBuilder(
+        future: _initialization,
+        builder: (
+          BuildContext context,
+          AsyncSnapshot<dynamic> snapshot,
+        ) {
+          return MultiProvider(
+            providers: [
+              ChangeNotifierProvider.value(
+                value: SheetsViewProvider(),
+              ),
+              ChangeNotifierProvider.value(
+                value: BgColorProvider(),
+              ),
+              ChangeNotifierProvider.value(
+                value: PenEraserProvider(),
+              ),
+            ],
+            child: MaterialApp(
+              home: DrawScreen(),
+              debugShowCheckedModeBanner: false,
+            ),
+          );
+        });
   }
 }
