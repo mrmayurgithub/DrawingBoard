@@ -111,18 +111,20 @@ class _RightBarState extends State<RightBar> {
               ),
               onPressed: () => redo(),
             ),
-            // IconButton(
-            //   icon: Icon(
-            //     Icons.cancel_outlined,
-            //     size: 17,
-            //     color: Colors.white,
-            //   ),
-            //   onPressed: () {
-            //     Scaffold.of(context).setState(() {
-            //       points.clear();
-            //     });
-            //   },
-            // ),
+            IconButton(
+              icon: Icon(
+                Icons.cancel_outlined,
+                size: 17,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Scaffold.of(context).setState(() {
+                  points.clear();
+                  revPoints.clear();
+                  deletedPoints.clear();
+                });
+              },
+            ),
           ],
         ),
       ),
