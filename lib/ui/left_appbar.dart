@@ -40,8 +40,20 @@ class _TopAppBarState extends State<TopAppBar> {
               onSelected: (String value) {},
               itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                 PopupMenuItem<String>(
+                  value: 'pentype',
+                  child: ListTile(
+                    title: Text('Pen'),
+                    onTap: () {},
+                  ),
+                ),
+                PopupMenuDivider(),
+                PopupMenuItem<String>(
                   value: 'color',
                   child: ListTile(
+                    leading: Icon(
+                      FontAwesomeIcons.circle,
+                      color: Colors.blue,
+                    ),
                     title: Text('Colors'),
                     onTap: () {
                       return showDialog(
@@ -65,26 +77,31 @@ class _TopAppBarState extends State<TopAppBar> {
                     },
                   ),
                 ),
+                PopupMenuDivider(),
                 PopupMenuItem<String>(
                   value: 'strokeWidth',
-                  child: StatefulBuilder(
-                    builder: (BuildContext context, void Function(void Function()) setState) => Slider(
-                      value: brushWidth,
-                      min: 4,
-                      max: 40,
-                      label: '$brushWidth',
-                      onChanged: (value) {
-                        setState(() {
-                          brushWidth = value;
-                        });
-                      },
-                    ),
-                  ),
+                  child: StatefulBuilder(builder: (BuildContext context, void Function(void Function()) setState) {
+                    return Row(
+                      children: [
+                        Slider(
+                          value: brushWidth,
+                          min: 4,
+                          max: 40,
+                          label: '$brushWidth',
+                          onChanged: (value) {
+                            setState(() {
+                              brushWidth = value;
+                            });
+                          },
+                        ),
+                      ],
+                    );
+                  }),
                 ),
               ],
             ),
-
             IconButton(
+              tooltip: 'Vector Fill',
               icon: Icon(
                 FontAwesomeIcons.fill,
                 color: Colors.white,
@@ -110,37 +127,61 @@ class _TopAppBarState extends State<TopAppBar> {
                 );
               },
             ),
-            // PopupMenuItem<String>(
-            //   value: 'opacity',
-            //   child: ListTile(
-            //     title: TextFormField(
-            //       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            //       onChanged: (value) {
-            //         colorOpacity = double.parse(value);
-            //       },
-            //       decoration: InputDecoration.collapsed(
-            //         hintText: colorOpacity.toString(),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            // PopupMenuButton<String>(
-            //   icon: Icon(
-            //     FontAwesomeIcons.font,
-            //     size: 14,
-            //     color: Colors.white,
-            //   ),
-            //   onSelected: (String value) {},
-            //   itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-            //     PopupMenuItem<String>(
-            //       value: 'fonts',
-            //       child: ListTile(
-            //         title: Text('Font'),
-            //         onTap: () {},
-            //       ),
-            //     ),
-            //   ],
-            // ),
+            PopupMenuButton<String>(
+              tooltip: 'Insert Shape',
+              icon: Icon(
+                FontAwesomeIcons.shapes,
+                color: Colors.white,
+                size: 18,
+              ),
+              onSelected: (String value) {},
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                PopupMenuItem<String>(
+                  value: 'shape',
+                  child: ListTile(
+                    leading: Icon(FontAwesomeIcons.circle),
+                    title: Text('Shape'),
+                    onTap: () {
+                      return showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Container(
+                              width: MediaQuery.of(context).size.width / 4,
+                              height: MediaQuery.of(context).size.height / 3,
+                              child: GridView.count(
+                                shrinkWrap: true,
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 10,
+                                crossAxisSpacing: 10,
+                                // children: List.generate(10, (index) => null),
+                                children: [
+                                  Icon(FontAwesomeIcons.circle),
+                                  Icon(FontAwesomeIcons.square),
+                                  Icon(FontAwesomeIcons.star),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
+                PopupMenuDivider(),
+                PopupMenuItem<String>(
+                  value: 'shapeColor',
+                  child: ListTile(
+                    leading: Icon(
+                      FontAwesomeIcons.circle,
+                      color: Colors.blue,
+                    ),
+                    title: Text('Shape Color'),
+                    onTap: () {},
+                  ),
+                ),
+              ],
+            ),
             TextButton(
               onPressed: () {},
               child: Text(
@@ -151,8 +192,8 @@ class _TopAppBarState extends State<TopAppBar> {
                 ),
               ),
             ),
-
             PopupMenuButton<String>(
+              tooltip: 'New Sheet',
               icon: Icon(
                 Icons.add,
                 color: Colors.white,
@@ -168,6 +209,7 @@ class _TopAppBarState extends State<TopAppBar> {
                     },
                   ),
                 ),
+                PopupMenuDivider(),
                 PopupMenuItem<String>(
                   value: 'gridpaper',
                   child: ListTile(

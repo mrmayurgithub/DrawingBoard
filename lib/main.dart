@@ -1,4 +1,3 @@
-import 'package:drawing_app/ui/constants/constants.dart';
 import 'package:drawing_app/ui/home_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -18,29 +17,4 @@ void main() async {
     home: DrawScreen(),
     debugShowCheckedModeBanner: false,
   ));
-}
-
-class SliderScreen extends StatefulWidget {
-  @override
-  _SliderScreenState createState() => _SliderScreenState();
-}
-
-class _SliderScreenState extends State<SliderScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Slider(
-          value: brushWidth,
-          min: 4,
-          max: 40,
-          onChanged: (value) {
-            setState(() {
-              brushWidth = value;
-            });
-          },
-        ),
-      ),
-    );
-  }
 }

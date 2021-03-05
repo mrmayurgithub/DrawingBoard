@@ -31,7 +31,6 @@ dependencies:
   font_awesome_flutter: ^8.11.0
   fluttertoast: ^7.1.8
   flutter_material_color_picker: ^1.0.5
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
