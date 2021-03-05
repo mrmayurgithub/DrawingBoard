@@ -48,6 +48,7 @@ class MainApp extends StatelessWidget {
               ),
             ],
             child: MaterialApp(
+              title: 'DrawingBoard',
               home: DrawScreen(),
               debugShowCheckedModeBanner: false,
             ),
