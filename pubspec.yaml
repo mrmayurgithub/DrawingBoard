@@ -20,6 +20,8 @@ dependencies:
   fluttertoast: ^7.1.8
   flutter_material_color_picker: ^1.0.5
   provider: ^5.0.0
+  firebase_core: ^1.0.0
+  url_launcher: ^6.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
