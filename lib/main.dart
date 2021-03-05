@@ -1,4 +1,5 @@
 import 'package:drawing_app/providers/bg_color_provider.dart';
+import 'package:drawing_app/providers/pen_type_provider.dart';
 import 'package:drawing_app/providers/sheets_provider.dart';
 import 'package:drawing_app/ui/home_page.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,9 @@ class MainApp extends StatelessWidget {
         ),
         ChangeNotifierProvider.value(
           value: BgColorProvider(),
+        ),
+        ChangeNotifierProvider.value(
+          value: PenEraserProvider(),
         ),
       ],
       child: MaterialApp(

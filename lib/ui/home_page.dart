@@ -1,4 +1,4 @@
-import 'package:drawing_app/pointColor_model/pointColor_model.dart';
+import 'package:drawing_app/models/pen_stroke_model.dart';
 import 'package:drawing_app/providers/bg_color_provider.dart';
 import 'package:drawing_app/providers/sheets_provider.dart';
 import 'package:drawing_app/ui/constants/constants.dart';

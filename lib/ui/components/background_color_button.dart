@@ -3,6 +3,7 @@ import 'package:drawing_app/ui/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class BackGroundColorButton extends StatelessWidget {
   const BackGroundColorButton({
@@ -18,10 +19,12 @@ class BackGroundColorButton extends StatelessWidget {
     return IconButton(
       padding: EdgeInsets.all(8),
       tooltip: 'Vector Fill',
-      icon: Icon(
-        FontAwesomeIcons.fill,
-        color: Colors.white,
-        size: 15,
+      icon: Consumer<BgColorProvider>(
+        builder: (context, bgVal, child) => Icon(
+          FontAwesomeIcons.fill,
+          color: bgVal.bgColor,
+          size: 15,
+        ),
       ),
       onPressed: () {
         return showDialog(

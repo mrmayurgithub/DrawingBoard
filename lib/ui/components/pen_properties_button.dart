@@ -76,7 +76,7 @@ class PenProperties extends StatelessWidget {
           child: ListTile(
             leading: Icon(
               FontAwesomeIcons.circle,
-              color: Colors.blue,
+              color: brushColor,
             ),
             title: Text('Colors'),
             onTap: () {
