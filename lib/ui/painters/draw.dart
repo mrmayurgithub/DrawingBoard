@@ -1,9 +1,9 @@
 import 'package:drawing_app/pointColor_model/pointColor_model.dart';
 import 'package:flutter/material.dart';
 
-class Draw extends CustomPainter {
-  List<pointColor> points;
-  Draw({this.points});
+class DrawPen extends CustomPainter {
+  List<PenStroke> points;
+  DrawPen({this.points});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -11,7 +11,7 @@ class Draw extends CustomPainter {
       if (points[i] != null && points[i + 1] != null) {
         Paint paint = Paint()
           ..color = points[i].color
-          ..strokeCap = StrokeCap.round
+          ..strokeCap = points[i].strokeCap
           ..strokeWidth = points[i].brushWidth;
         canvas.drawLine(points[i].offset, points[i + 1].offset, paint);
       }
@@ -19,5 +19,5 @@ class Draw extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(Draw oldDelegate) => oldDelegate.points != points;
+  bool shouldRepaint(DrawPen oldDelegate) => oldDelegate.points != points;
 }
