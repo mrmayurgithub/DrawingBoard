@@ -1,7 +1,9 @@
 import 'package:drawing_app/providers/bg_color_provider.dart';
+import 'package:drawing_app/providers/eraser_provider.dart';
 import 'package:drawing_app/providers/sheets_provider.dart';
 import 'package:drawing_app/ui/components/background_color_button.dart';
 import 'package:drawing_app/ui/components/bottom_left_bar.dart';
+import 'package:drawing_app/ui/components/eraser_button.dart';
 import 'package:drawing_app/ui/components/pen_properties_button.dart';
 import 'package:drawing_app/ui/components/text_insert_button.dart';
 import 'package:drawing_app/ui/constants/constants.dart';
@@ -44,30 +46,8 @@ class _TopAppBarState extends State<TopAppBar> {
                 children: [
                   PenProperties(),
                   BackGroundColorButton(bgColorProvider: _bgColorProvider),
-
                   // ShapeInsertButton(),
-                  IconButton(
-                    tooltip: 'Erase',
-                    padding: EdgeInsets.all(8),
-                    icon: Icon(
-                      FontAwesomeIcons.eraser,
-                      color: Colors.white,
-                      size: iconSize,
-                    ),
-                    onPressed: () {
-                      return showDialog(
-                        context: context,
-                        builder: (context) => Dialog(
-                          child: Container(
-                            child: Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text('This feature will be available soon'),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+                  EraserButton(),
                   TextInsertButton(),
                   PopupMenuButton<String>(
                     color: popupMenuColor,

@@ -44,31 +44,14 @@ class BottomLeftBar extends StatelessWidget {
               print('BOTTOM APPBAR: $n');
             },
           ),
-          PopupMenuButton<String>(
-            tooltip: 'Settings',
+          IconButton(
+            padding: EdgeInsets.all(8.0),
             icon: Icon(
-              Icons.settings,
+              FontAwesomeIcons.github,
               color: iconColor,
               size: iconSize,
             ),
-            onSelected: (String value) {},
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              PopupMenuItem<String>(
-                value: 'launchrepo',
-                child: ListTile(
-                  leading: Icon(
-                    FontAwesomeIcons.github,
-                    color: Colors.black,
-                    size: iconSize,
-                  ),
-                  title: Text('Github Repository'),
-                  onTap: () {
-                    _launchURL();
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ),
-            ],
+            onPressed: _launchURL,
           ),
           SizedBox(height: 10),
         ],

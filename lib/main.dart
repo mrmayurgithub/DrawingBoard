@@ -1,4 +1,5 @@
 import 'package:drawing_app/providers/bg_color_provider.dart';
+import 'package:drawing_app/providers/eraser_provider.dart';
 import 'package:drawing_app/providers/pen_type_provider.dart';
 import 'package:drawing_app/providers/sheetnumber_provider.dart';
 import 'package:drawing_app/providers/sheets_provider.dart';
@@ -49,6 +50,9 @@ class MainApp extends StatelessWidget {
             ),
             ChangeNotifierProvider.value(
               value: SheetNumberProvider(),
+            ),
+            ChangeNotifierProvider.value(
+              value: EraserProvider(),
             ),
           ],
           child: MaterialApp(

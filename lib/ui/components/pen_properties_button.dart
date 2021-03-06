@@ -1,9 +1,11 @@
+import 'package:drawing_app/providers/eraser_provider.dart';
 import 'package:drawing_app/ui/constants/constants.dart';
 import 'package:drawing_app/ui/styles/icon_styles.dart';
 import 'package:drawing_app/ui/styles/popup_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class PenProperties extends StatelessWidget {
   const PenProperties({
@@ -24,6 +26,11 @@ class PenProperties extends StatelessWidget {
         PopupMenuItem<String>(
           value: 'pentype',
           child: ListTile(
+            onTap: () {
+              var _eraserProv = Provider.of<EraserProvider>(context, listen: false);
+              _eraserProv.isEraser = false;
+              Navigator.of(context).pop();
+            },
             tileColor: popupMenuColor,
             title: Text(
               'Pen',
