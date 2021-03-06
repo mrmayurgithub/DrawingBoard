@@ -1,4 +1,7 @@
-# DrawingBoard
+<img src="assets/logo.png" width="5%"> 
+
+# DrawingBoard 
+
 ### Free online drawing application for all ages.
 
 <div align="center">
@@ -7,6 +10,9 @@
         <img src="https://img.shields.io/badge/Support-PayPal-brightgreen" />
     </a>
 </div>
+
+## Screenshots
+
 <img src="assets/drawingboardio.png" width="100%">
 
 ## Installation
