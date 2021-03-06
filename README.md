@@ -11,6 +11,14 @@
     </a>
 </div>
 
+## Features
+- Draw 
+- Erase 
+- Add new page
+- Select between Grid Page and Plane Page.
+- Change pen stroke, color.
+- Change Background Color.
+
 ## Screenshots
 
 <img src="assets/scene.png" width="100%">
