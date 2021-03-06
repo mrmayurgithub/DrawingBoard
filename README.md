@@ -42,6 +42,13 @@ The Windows version of the app will be launched soon.
 Web:
 [DrawingBoard](https://drawingboardio.web.app/#/ "Free online drawing application for all ages.")
 
+## Packages Used
+- font_awesome_flutter
+- fluttertoast
+- flutter_material_color_picker
+- provider
+- firebase_core
+- url_launcher
 
 ## Bugs or Reports
 
