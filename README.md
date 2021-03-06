@@ -24,7 +24,4 @@ The Windows version of the app will be launched soon.
 ```
 
 Web:
-
-```sh
 [DrawingBoard](https://drawingboardio.web.app/#/ "Free online drawing application for all ages.")
-```
