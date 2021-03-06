@@ -13,7 +13,8 @@
 
 ## Screenshots
 
-<img src="assets/drawingboardio.png" width="100%">
+|<img src="assets/scene.png" width="100%">|<img src="assets/screenshot2.png" width="100%">|
+<img src="assets/screenshot3.png" width="100%">
 
 ## Installation
 
