@@ -1,5 +1,6 @@
 import 'package:drawing_app/providers/bg_color_provider.dart';
 import 'package:drawing_app/providers/pen_type_provider.dart';
+import 'package:drawing_app/providers/sheetnumber_provider.dart';
 import 'package:drawing_app/providers/sheets_provider.dart';
 import 'package:drawing_app/ui/home_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -30,29 +31,33 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: _initialization,
-        builder: (
-          BuildContext context,
-          AsyncSnapshot<dynamic> snapshot,
-        ) {
-          return MultiProvider(
-            providers: [
-              ChangeNotifierProvider.value(
-                value: SheetsViewProvider(),
-              ),
-              ChangeNotifierProvider.value(
-                value: BgColorProvider(),
-              ),
-              ChangeNotifierProvider.value(
-                value: PenEraserProvider(),
-              ),
-            ],
-            child: MaterialApp(
-              title: 'DrawingBoard',
-              home: DrawScreen(),
-              debugShowCheckedModeBanner: false,
+      future: _initialization,
+      builder: (
+        BuildContext context,
+        AsyncSnapshot<dynamic> snapshot,
+      ) {
+        return MultiProvider(
+          providers: [
+            ChangeNotifierProvider.value(
+              value: SheetsViewProvider(),
             ),
-          );
-        });
+            ChangeNotifierProvider.value(
+              value: BgColorProvider(),
+            ),
+            ChangeNotifierProvider.value(
+              value: PenEraserProvider(),
+            ),
+            ChangeNotifierProvider.value(
+              value: SheetNumberProvider(),
+            ),
+          ],
+          child: MaterialApp(
+            title: 'DrawingBoard',
+            home: DrawScreen(),
+            debugShowCheckedModeBanner: false,
+          ),
+        );
+      },
+    );
   }
 }

@@ -1,7 +1,10 @@
+import 'package:drawing_app/providers/sheetnumber_provider.dart';
 import 'package:drawing_app/ui/constants/constants.dart';
+import 'package:drawing_app/ui/styles/icon_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class RightBar extends StatefulWidget {
   @override
@@ -95,27 +98,33 @@ class _RightBarState extends State<RightBar> {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            Consumer<SheetNumberProvider>(
+              builder: (context, nsheetProv, child) => TextButton(
+                onPressed: () {},
+                child: Text('${nsheetProv.sheetNumber}'),
+              ),
+            ),
             IconButton(
               icon: Icon(
                 FontAwesomeIcons.undo,
-                size: 17,
-                color: Colors.white,
+                color: iconColor,
+                size: iconSize,
               ),
               onPressed: () => undo(),
             ),
             IconButton(
               icon: Icon(
                 FontAwesomeIcons.redo,
-                size: 17,
-                color: Colors.white,
+                color: iconColor,
+                size: iconSize,
               ),
               onPressed: () => redo(),
             ),
             IconButton(
               icon: Icon(
                 Icons.cancel_outlined,
-                size: 17,
-                color: Colors.white,
+                color: iconColor,
+                size: iconSize,
               ),
               onPressed: () {
                 Scaffold.of(context).setState(() {

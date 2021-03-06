@@ -1,4 +1,6 @@
 import 'package:drawing_app/ui/constants/constants.dart';
+import 'package:drawing_app/ui/styles/icon_styles.dart';
+import 'package:drawing_app/ui/styles/popup_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,29 +13,39 @@ class PenProperties extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
+      color: popupMenuColor,
       icon: Icon(
         FontAwesomeIcons.pen,
-        size: 14,
-        color: brushColor == Colors.black ? Colors.white : brushColor,
+        color: brushColor,
+        size: iconSize,
       ),
       onSelected: (String value) {},
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
         PopupMenuItem<String>(
           value: 'pentype',
           child: ListTile(
-            title: Text('Pen'),
+            tileColor: popupMenuColor,
+            title: Text(
+              'Pen',
+              style: popupTextStyle,
+            ),
             trailing: PopupMenuButton<String>(
+              color: popupMenuColor,
               tooltip: 'penstroke',
               icon: Icon(
                 Icons.more_vert,
-                color: Colors.black,
+                color: popupTextStyle.color,
               ),
               onSelected: (String value) {},
               itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                 PopupMenuItem<String>(
                   value: 'roundstroke',
                   child: ListTile(
-                    title: Text('Round'),
+                    tileColor: popupMenuColor,
+                    title: Text(
+                      'Round',
+                      style: popupTextStyle,
+                    ),
                     onTap: () {
                       strokeCap = StrokeCap.round;
                       Navigator.of(context).pop();
@@ -45,7 +57,11 @@ class PenProperties extends StatelessWidget {
                 PopupMenuItem<String>(
                   value: 'buttstroke',
                   child: ListTile(
-                    title: Text('Butt'),
+                    tileColor: popupMenuColor,
+                    title: Text(
+                      'Butt',
+                      style: popupTextStyle,
+                    ),
                     onTap: () {
                       strokeCap = StrokeCap.butt;
                       brushWidth = 15;
@@ -58,7 +74,11 @@ class PenProperties extends StatelessWidget {
                 PopupMenuItem<String>(
                   value: 'squarestroke',
                   child: ListTile(
-                    title: Text('Square'),
+                    tileColor: popupMenuColor,
+                    title: Text(
+                      'Sqaure',
+                      style: popupTextStyle,
+                    ),
                     onTap: () {
                       strokeCap = StrokeCap.square;
                       Navigator.of(context).pop();
@@ -74,11 +94,15 @@ class PenProperties extends StatelessWidget {
         PopupMenuItem<String>(
           value: 'color',
           child: ListTile(
+            tileColor: popupMenuColor,
             leading: Icon(
               FontAwesomeIcons.circle,
               color: brushColor,
             ),
-            title: Text('Colors'),
+            title: Text(
+              'Colors',
+              style: popupTextStyle,
+            ),
             onTap: () {
               return showDialog(
                 context: context,

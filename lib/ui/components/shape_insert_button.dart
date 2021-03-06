@@ -1,3 +1,4 @@
+import 'package:drawing_app/ui/styles/icon_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -76,7 +77,11 @@ class ShapeInsertButton extends StatelessWidget {
     return IconButton(
       tooltip: 'Insert Text',
       padding: EdgeInsets.all(8.0),
-      icon: Icon(FontAwesomeIcons.shapes),
+      icon: Icon(
+        FontAwesomeIcons.shapes,
+        color: Colors.black,
+        size: iconSize,
+      ),
       onPressed: () {
         return showDialog(
           context: context,

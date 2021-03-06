@@ -1,14 +1,15 @@
 import 'package:drawing_app/providers/bg_color_provider.dart';
 import 'package:drawing_app/providers/sheets_provider.dart';
 import 'package:drawing_app/ui/components/background_color_button.dart';
+import 'package:drawing_app/ui/components/bottom_left_bar.dart';
 import 'package:drawing_app/ui/components/pen_properties_button.dart';
-import 'package:drawing_app/ui/components/shape_insert_button.dart';
 import 'package:drawing_app/ui/components/text_insert_button.dart';
 import 'package:drawing_app/ui/constants/constants.dart';
+import 'package:drawing_app/ui/styles/icon_styles.dart';
+import 'package:drawing_app/ui/styles/popup_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class TopAppBar extends StatefulWidget {
   @override
@@ -26,10 +27,6 @@ class _TopAppBarState extends State<TopAppBar> {
       revPoints.clear();
     });
   }
-
-  String _url = 'https://github.com/mrmayurgithub/DrawingBoard';
-
-  void _launchURL() async => await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +52,7 @@ class _TopAppBarState extends State<TopAppBar> {
                     icon: Icon(
                       FontAwesomeIcons.eraser,
                       color: Colors.white,
-                      size: 15,
+                      size: iconSize,
                     ),
                     onPressed: () {
                       return showDialog(
@@ -73,17 +70,22 @@ class _TopAppBarState extends State<TopAppBar> {
                   ),
                   TextInsertButton(),
                   PopupMenuButton<String>(
+                    color: popupMenuColor,
                     tooltip: 'Sheet View',
                     icon: Icon(
                       Icons.add,
-                      color: Colors.white,
+                      color: iconColor,
+                      size: iconSize + 7,
                     ),
                     onSelected: (String value) {},
                     itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                       PopupMenuItem<String>(
                         value: 'normalpaper',
                         child: ListTile(
-                          title: Text('Normal'),
+                          title: Text(
+                            'Normal',
+                            style: popupTextStyle,
+                          ),
                           onTap: () {
                             createNewFunction(false);
                           },
@@ -93,7 +95,10 @@ class _TopAppBarState extends State<TopAppBar> {
                       PopupMenuItem<String>(
                         value: 'gridpaper',
                         child: ListTile(
-                          title: Text('Grid Paper'),
+                          title: Text(
+                            'Grid Paper',
+                            style: popupTextStyle,
+                          ),
                           onTap: () {
                             createNewFunction(true);
                           },
@@ -104,22 +109,7 @@ class _TopAppBarState extends State<TopAppBar> {
                 ],
               ),
             ),
-            Container(
-              child: Column(
-                children: [
-                  IconButton(
-                    padding: EdgeInsets.all(8),
-                    icon: Icon(
-                      FontAwesomeIcons.github,
-                      color: Colors.white,
-                      size: 18,
-                    ),
-                    onPressed: _launchURL,
-                  ),
-                  SizedBox(height: 10),
-                ],
-              ),
-            ),
+            BottomLeftBar(),
           ],
         ),
       ),

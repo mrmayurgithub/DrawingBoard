@@ -1,5 +1,6 @@
 import 'package:drawing_app/providers/bg_color_provider.dart';
 import 'package:drawing_app/ui/constants/constants.dart';
+import 'package:drawing_app/ui/styles/icon_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,7 +24,7 @@ class BackGroundColorButton extends StatelessWidget {
         builder: (context, bgVal, child) => Icon(
           FontAwesomeIcons.fill,
           color: bgVal.bgColor,
-          size: 15,
+          size: iconSize,
         ),
       ),
       onPressed: () {

@@ -1,3 +1,4 @@
+import 'package:drawing_app/ui/styles/icon_styles.dart';
 import 'package:flutter/material.dart';
 
 class TextInsertButton extends StatelessWidget {
@@ -7,7 +8,7 @@ class TextInsertButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return IconButton(
       onPressed: () {
         return showDialog(
           context: context,
@@ -21,12 +22,10 @@ class TextInsertButton extends StatelessWidget {
           ),
         );
       },
-      child: Text(
-        'T',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-        ),
+      icon: Icon(
+        Icons.text_rotate_up,
+        color: iconColor,
+        size: iconSize + 7,
       ),
     );
   }
