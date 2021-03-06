@@ -101,7 +101,7 @@ class _RightBarState extends State<RightBar> {
             Consumer<SheetNumberProvider>(
               builder: (context, nsheetProv, child) => TextButton(
                 onPressed: () {},
-                child: Text('${nsheetProv.sheetNumber}'),
+                child: Text('${nsheetProv.sheetNumber + 1}'),
               ),
             ),
             IconButton(
