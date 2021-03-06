@@ -41,3 +41,9 @@ If you encounter any problems feel free to open an [issue](https://github.com/mr
 
 > If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of ☕
 > - [PayPal](https://paypal.me/mrmayurrrr)
+
+## License
+
+DrawingBoard is licensed under `Apache License`. View [License](LICENSE.md)
+
+
