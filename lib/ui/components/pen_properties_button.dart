@@ -14,6 +14,13 @@ class PenProperties extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void eraserToPen() {
+      var _eraserProv = Provider.of<EraserProvider>(context, listen: false);
+      if (_eraserProv.isEraser) {
+        _eraserProv.isEraser = false;
+      }
+    }
+
     return PopupMenuButton<String>(
       color: popupMenuColor,
       icon: Icon(
@@ -27,8 +34,7 @@ class PenProperties extends StatelessWidget {
           value: 'pentype',
           child: ListTile(
             onTap: () {
-              var _eraserProv = Provider.of<EraserProvider>(context, listen: false);
-              _eraserProv.isEraser = false;
+              eraserToPen();
               Navigator.of(context).pop();
             },
             tileColor: popupMenuColor,
@@ -54,6 +60,8 @@ class PenProperties extends StatelessWidget {
                       style: popupTextStyle,
                     ),
                     onTap: () {
+                      eraserToPen();
+
                       strokeCap = StrokeCap.round;
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
@@ -70,6 +78,7 @@ class PenProperties extends StatelessWidget {
                       style: popupTextStyle,
                     ),
                     onTap: () {
+                      eraserToPen();
                       strokeCap = StrokeCap.butt;
                       brushWidth = 15;
                       Navigator.of(context).pop();
@@ -87,6 +96,7 @@ class PenProperties extends StatelessWidget {
                       style: popupTextStyle,
                     ),
                     onTap: () {
+                      eraserToPen();
                       strokeCap = StrokeCap.square;
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
@@ -121,6 +131,7 @@ class PenProperties extends StatelessWidget {
                       allowShades: false,
                       selectedColor: brushColor,
                       onMainColorChange: (value) {
+                        eraserToPen();
                         brushColor = value;
                         Navigator.of(context).pop();
                         Navigator.of(context).pop();
@@ -143,8 +154,10 @@ class PenProperties extends StatelessWidget {
                   min: 4,
                   max: 40,
                   label: '$brushWidth',
-                  onChanged: (value) {
+                  onChanged: (value) {},
+                  onChangeEnd: (value) {
                     setState(() {
+                      eraserToPen();
                       brushWidth = value;
                     });
                   },
