@@ -12,12 +12,15 @@
 </div>
 
 ## Features
-- Draw 
-- Erase 
-- Add new page
-- Select between Grid Page and Plane Page.
-- Change pen stroke, color.
-- Change Background Color.
+- [x] Draw 
+- [x] Erase 
+- [x] Add new page
+- [x] Select between Grid Page and Plane Page.
+- [x] Change pen stroke, color.
+- [x] Change Background Color.
+- [ ] Login/SignUp
+- [ ] Save Drawing Book
+- [ ] Create Multiple Drawing Books
 
 ## Screenshots
 
@@ -49,6 +52,22 @@ Web:
 - provider
 - firebase_core
 - url_launcher
+
+### Directory Structure
+
+The project directory structure is as follows:
+
+```
+├── android
+├── asset
+├── build
+├── images
+├── ios
+├── lib
+├── pubspec.lock
+├── pubspec.yaml
+
+```
 
 ## Bugs or Reports
 
