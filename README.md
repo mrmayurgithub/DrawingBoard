@@ -28,6 +28,25 @@
 <img src="assets/screenshot2.png" width="100%">
 <img src="assets/screenshot3.png" width="100%">
 
+## How To Use
+
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Flutter](https://flutter.dev/docs/get-started/install) installed on your computer. From your command line:
+
+```bash
+# Clone this repository
+$ git clone https://github.com/mrmayurgithub/DrawingBoard.git
+
+# Go into the repository
+$ cd drawing_app
+
+# Install dependencies
+$ flutter packages get
+
+# Run the app
+$ flutter run
+```
+
+
 ## Installation
 
 Linux:
