@@ -34,63 +34,70 @@ class _TopAppBarState extends State<TopAppBar> {
   Widget build(BuildContext context) {
     var _bgColorProvider = Provider.of<BgColorProvider>(context);
     return Builder(
-      builder: (BuildContext context) => Container(
-        color: Colors.black,
-        width: 50,
-        height: double.infinity,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              child: Column(
-                children: [
-                  PenProperties(),
-                  BackGroundColorButton(bgColorProvider: _bgColorProvider),
-                  // ShapeInsertButton(),
-                  EraserButton(),
-                  TextInsertButton(),
-                  PopupMenuButton<String>(
-                    color: popupMenuColor,
-                    tooltip: 'Sheet View',
-                    icon: Icon(
-                      Icons.add,
-                      color: iconColor,
-                      size: iconSize + 7,
+      builder: (BuildContext context) => Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: 50,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                child: Column(
+                  children: [
+                    PenProperties(),
+                    BackGroundColorButton(bgColorProvider: _bgColorProvider),
+                    // ShapeInsertButton(),
+                    EraserButton(),
+                    TextInsertButton(),
+                    PopupMenuButton<String>(
+                      color: popupMenuColor,
+                      tooltip: 'Sheet View',
+                      icon: Icon(
+                        Icons.add,
+                        color: iconColor,
+                        size: iconSize + 7,
+                      ),
+                      onSelected: (String value) {},
+                      itemBuilder: (BuildContext context) =>
+                          <PopupMenuEntry<String>>[
+                        PopupMenuItem<String>(
+                          value: 'normalpaper',
+                          child: ListTile(
+                            title: Text(
+                              'Normal',
+                              style: popupTextStyle,
+                            ),
+                            onTap: () {
+                              createNewFunction(false);
+                            },
+                          ),
+                        ),
+                        PopupMenuDivider(),
+                        PopupMenuItem<String>(
+                          value: 'gridpaper',
+                          child: ListTile(
+                            title: Text(
+                              'Grid Paper',
+                              style: popupTextStyle,
+                            ),
+                            onTap: () {
+                              createNewFunction(true);
+                            },
+                          ),
+                        ),
+                      ],
                     ),
-                    onSelected: (String value) {},
-                    itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-                      PopupMenuItem<String>(
-                        value: 'normalpaper',
-                        child: ListTile(
-                          title: Text(
-                            'Normal',
-                            style: popupTextStyle,
-                          ),
-                          onTap: () {
-                            createNewFunction(false);
-                          },
-                        ),
-                      ),
-                      PopupMenuDivider(),
-                      PopupMenuItem<String>(
-                        value: 'gridpaper',
-                        child: ListTile(
-                          title: Text(
-                            'Grid Paper',
-                            style: popupTextStyle,
-                          ),
-                          onTap: () {
-                            createNewFunction(true);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            BottomLeftBar(),
-          ],
+              BottomLeftBar(),
+            ],
+          ),
         ),
       ),
     );

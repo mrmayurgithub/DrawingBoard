@@ -71,11 +71,14 @@ class _RightBarState extends State<RightBar> {
               }
               if (count == 2) break;
             }
-            for (int j = deletedPoints.length - i - 1; j < deletedPoints.length; j++) {
+            for (int j = deletedPoints.length - i - 1;
+                j < deletedPoints.length;
+                j++) {
               points.add(deletedPoints[j]);
             }
 
-            deletedPoints.removeRange(deletedPoints.length - i - 1, deletedPoints.length - 1);
+            deletedPoints.removeRange(
+                deletedPoints.length - i - 1, deletedPoints.length - 1);
           }
           revPoints.clear();
         },
@@ -92,49 +95,55 @@ class _RightBarState extends State<RightBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      width: 50,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Consumer<SheetNumberProvider>(
-              builder: (context, nsheetProv, child) => TextButton(
-                onPressed: () {},
-                child: Text('${nsheetProv.sheetNumber + 1}'),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.black,
+        ),
+        width: 50,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Consumer<SheetNumberProvider>(
+                builder: (context, nsheetProv, child) => TextButton(
+                  onPressed: () {},
+                  child: Text('${nsheetProv.sheetNumber + 1}'),
+                ),
               ),
-            ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.undo,
-                color: iconColor,
-                size: iconSize,
+              IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.undo,
+                  color: iconColor,
+                  size: iconSize,
+                ),
+                onPressed: () => undo(),
               ),
-              onPressed: () => undo(),
-            ),
-            IconButton(
-              icon: Icon(
-                FontAwesomeIcons.redo,
-                color: iconColor,
-                size: iconSize,
+              IconButton(
+                icon: Icon(
+                  FontAwesomeIcons.redo,
+                  color: iconColor,
+                  size: iconSize,
+                ),
+                onPressed: () => redo(),
               ),
-              onPressed: () => redo(),
-            ),
-            IconButton(
-              icon: Icon(
-                Icons.cancel_outlined,
-                color: iconColor,
-                size: iconSize,
+              IconButton(
+                icon: Icon(
+                  Icons.cancel_outlined,
+                  color: iconColor,
+                  size: iconSize,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).setState(() {
+                    points.clear();
+                    revPoints.clear();
+                    deletedPoints.clear();
+                  });
+                },
               ),
-              onPressed: () {
-                Scaffold.of(context).setState(() {
-                  points.clear();
-                  revPoints.clear();
-                  deletedPoints.clear();
-                });
-              },
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

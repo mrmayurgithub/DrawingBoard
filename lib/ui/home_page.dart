@@ -28,35 +28,54 @@ class _DrawScreenState extends State<DrawScreen> {
                 builder: (context, sheetView, child) {
                   return sheetView.isGrid
                       ? GridPaper(
-                          interval: 10,
-                          divisions: 2,
-                          subdivisions: 5,
+                          interval: 20,
+                          divisions: 1,
+                          subdivisions: 1,
                           child: Consumer<SheetNumberProvider>(
                             builder: (context, sheetNProv, child) {
                               return Consumer<EraserProvider>(
                                 builder: (context, eraseProv, child) {
                                   print('ERASER CHANGED');
                                   return Consumer<BgColorProvider>(
-                                    builder: (BuildContext context, bg, Widget child) => Container(
+                                    builder: (BuildContext context, bg,
+                                            Widget child) =>
+                                        Container(
                                       color: bg.bgColor,
                                       child: MouseRegion(
-                                        cursor: eraseProv.isEraser ? SystemMouseCursors.copy : SystemMouseCursors.basic,
+                                        cursor: eraseProv.isEraser
+                                            ? SystemMouseCursors.copy
+                                            : SystemMouseCursors.basic,
                                         child: GestureDetector(
-                                          onPanUpdate: (DragUpdateDetails details) {
+                                          onPanUpdate:
+                                              (DragUpdateDetails details) {
                                             setState(
                                               () {
-                                                RenderBox object = context.findRenderObject();
-                                                Offset _localPosition = object.globalToLocal(details.globalPosition);
-                                                PenStroke _localPoint = PenStroke();
-                                                _localPoint.color = eraseProv.isEraser ? bg.bgColor : brushColor;
-                                                _localPoint.offset = _localPosition;
-                                                _localPoint.brushWidth = eraseProv.isEraser ? eraserWidth : brushWidth;
-                                                _localPoint.strokeCap = strokeCap;
-                                                points = List.from(points)..add(_localPoint);
+                                                RenderBox object =
+                                                    context.findRenderObject();
+                                                Offset _localPosition =
+                                                    object.globalToLocal(
+                                                        details.globalPosition);
+                                                PenStroke _localPoint =
+                                                    PenStroke();
+                                                _localPoint.color =
+                                                    eraseProv.isEraser
+                                                        ? bg.bgColor
+                                                        : brushColor;
+                                                _localPoint.offset =
+                                                    _localPosition;
+                                                _localPoint.brushWidth =
+                                                    eraseProv.isEraser
+                                                        ? eraserWidth
+                                                        : brushWidth;
+                                                _localPoint.strokeCap =
+                                                    strokeCap;
+                                                points = List.from(points)
+                                                  ..add(_localPoint);
                                               },
                                             );
                                           },
-                                          onPanEnd: (DragEndDetails details) => {
+                                          onPanEnd: (DragEndDetails details) =>
+                                              {
                                             deletedPoints.clear(),
                                             points.add(null),
                                             print('POINTS: ${points.length}'),
@@ -76,26 +95,40 @@ class _DrawScreenState extends State<DrawScreen> {
                         )
                       : Consumer<SheetNumberProvider>(
                           builder: (context, sheetNProv, child) {
-                            print('NUMBER OF SHEETS 2: ${sheetNProv.sheetNumber}');
+                            print(
+                                'NUMBER OF SHEETS 2: ${sheetNProv.sheetNumber}');
 
                             return Consumer<EraserProvider>(
-                              builder: (context, eraseProv, child) => Consumer<BgColorProvider>(
+                              builder: (context, eraseProv, child) =>
+                                  Consumer<BgColorProvider>(
                                 builder: (context, bg, child) => Container(
                                   color: bg.bgColor,
                                   child: MouseRegion(
-                                    cursor: eraseProv.isEraser ? SystemMouseCursors.disappearing : SystemMouseCursors.basic,
+                                    cursor: eraseProv.isEraser
+                                        ? SystemMouseCursors.disappearing
+                                        : SystemMouseCursors.basic,
                                     child: GestureDetector(
                                       onPanUpdate: (DragUpdateDetails details) {
                                         setState(
                                           () {
-                                            RenderBox object = context.findRenderObject();
-                                            Offset _localPosition = object.globalToLocal(details.globalPosition);
+                                            RenderBox object =
+                                                context.findRenderObject();
+                                            Offset _localPosition =
+                                                object.globalToLocal(
+                                                    details.globalPosition);
                                             PenStroke _localPoint = PenStroke();
-                                            _localPoint.color = eraseProv.isEraser ? bg.bgColor : brushColor;
+                                            _localPoint.color =
+                                                eraseProv.isEraser
+                                                    ? bg.bgColor
+                                                    : brushColor;
                                             _localPoint.offset = _localPosition;
-                                            _localPoint.brushWidth = eraseProv.isEraser ? eraserWidth : brushWidth;
+                                            _localPoint.brushWidth =
+                                                eraseProv.isEraser
+                                                    ? eraserWidth
+                                                    : brushWidth;
                                             _localPoint.strokeCap = strokeCap;
-                                            points = List.from(points)..add(_localPoint);
+                                            points = List.from(points)
+                                              ..add(_localPoint);
                                           },
                                         );
                                       },

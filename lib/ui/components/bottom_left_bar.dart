@@ -10,7 +10,9 @@ class BottomLeftBar extends StatelessWidget {
   const BottomLeftBar({
     Key key,
   }) : super(key: key);
-  void _launchURL() async => await canLaunch(githubUrl) ? await launch(githubUrl) : throw 'Could not launch $githubUrl';
+  void _launchURL() async => await canLaunch(githubUrl)
+      ? await launch(githubUrl)
+      : throw 'Could not launch $githubUrl';
 
   @override
   Widget build(BuildContext context) {
