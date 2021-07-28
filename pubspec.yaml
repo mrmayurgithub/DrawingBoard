@@ -20,6 +20,7 @@ dependencies:
   provider: ^5.0.0
   firebase_core: ^1.0.0
   url_launcher: ^6.0.2
+  url_strategy: ^0.2.0
   keyboard_shortcuts: ^0.1.4
 dev_dependencies:
   flutter_test:
