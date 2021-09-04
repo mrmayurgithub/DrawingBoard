@@ -46,21 +46,7 @@ $ flutter packages get
 $ flutter run
 ```
 
-
 ## Installation
-
-Linux:
-
-```sh
-The Linux version of the app will be launched soon.
-```
-
-Windows:
-
-```sh
-The Windows version of the app will be launched soon.
-```
-
 Web:
 [DrawingBoard](https://drawingboardio.web.app/#/ "Free online drawing application for all ages.")
 
